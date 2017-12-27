@@ -2,8 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
 import { AuthProvider } from "../../providers/auth/auth";
 import { Facebook,FacebookLoginResponse } from "@ionic-native/facebook";
-
-
+import {ForgetpasswordProvider} from '../../providers/forgetpassword/forgetpassword'
 /**
  * Generated class for the LoginPage page.
  *
@@ -18,16 +17,17 @@ import { Facebook,FacebookLoginResponse } from "@ionic-native/facebook";
 })
 export class LoginPage {
   userData:any=null;
+  email: string='';
   logincredentials= { email: '', password: '' };
   regcredentials= { name:'',email: '', password: '' ,mobile: '',};
    public buttonClicked1: boolean = true;
    public buttonClicked2: boolean = false;
    public buttonClicked3: boolean = false;
    
-  constructor(public navCtrl: NavController,private fb:Facebook, private auth:AuthProvider,public navParams: NavParams, private alertCtrl: AlertController) {
+  constructor(public navCtrl: NavController,private fb:Facebook,private fp:ForgetpasswordProvider, private auth:AuthProvider,public navParams: NavParams, private alertCtrl: AlertController) {
   }
 
- forgetpass()
+buttonclicked3()
  {
   //  this.navCtrl.setRoot(ForgotpasswordPage);
   this.buttonClicked1 = false;
@@ -87,4 +87,31 @@ onButtonClick2() {
     });
 
 }
+
+forgetpass()
+{
+    this.fp.forgetpass(this.email).subscribe(
+      message=>{
+        if (message.message=="email sent")
+        {
+          let alert = this. alertCtrl.create({
+              title: 'Done!',
+              subTitle: 'An email has beent sent',
+              buttons: ['Ok']
+            });
+            alert.present();
+        }
+       else if(message.exists==false){
+          let alert = this. alertCtrl.create({
+              title: 'Done!',
+              subTitle: 'An email has beent sent',
+              buttons: ['Ok']
+            });
+            alert.present();
+       }
+        
+      }
+    )
+}
+
 }

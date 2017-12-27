@@ -11,11 +11,12 @@ import { AuthProvider } from '../providers/auth/auth';
 import { HttpModule } from '@angular/http'
 import {Facebook} from '@ionic-native/facebook';
 import { ForgetpasswordProvider } from '../providers/forgetpassword/forgetpassword';
-
+import {  CategoriesPage} from '../pages/categories/categories'
+import {VerificationPage} from '../pages/verification/verification'
 @NgModule({
   declarations: [
     MyApp,
-    HomePage,LoginPage, 
+    HomePage,LoginPage,CategoriesPage, VerificationPage 
   ],
   imports: [
     BrowserModule,
@@ -24,7 +25,7 @@ import { ForgetpasswordProvider } from '../providers/forgetpassword/forgetpasswo
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    HomePage,LoginPage, 
+    HomePage,LoginPage, CategoriesPage,VerificationPage
   ],
   providers: [
     StatusBar,

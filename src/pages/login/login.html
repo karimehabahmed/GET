@@ -40,14 +40,14 @@
     <ion-input type="password" placeholder="Password" name="password"  [(ngModel)]="logincredentials.password" ></ion-input>
   </ion-item>
   <br>
-    <div (click)="forgetpass()" style="color: rgba(99, 99, 99, 1); margin-left:150px; top: 1450px ;background-color: white;">Forgot your Password?</div>
+    <div (click)="buttonclicked3()" style="color: rgba(99, 99, 99, 1); margin-left:150px; top: 1450px ;background-color: white;">Forgot your Password?</div>
        <br>
    <div *ngIf="error" class="alert alert-danger">{{error}}</div>
       <button ion-button type="submit" block > Sign In</button>
     
     </form>
     
-    <button ion-button (click)="loginwithfb()" block class="fb"><div style=" margin-left: 50px;"><ion-img style="width: 49px; height:45px; margin-left: -190px;" class width= "50"  src="../../assets/imgs/rounded rectangle 1-3@3x.png"></ion-img></div>Sign In with Facebook</button>
+    <button ion-button  block class="fb"><div style=" margin-left: 50px;"><ion-img style="width: 49px; height:45px; margin-left: -190px;" class width= "50"  src="../../assets/imgs/rounded rectangle 1-3@3x.png"></ion-img></div>Sign In with Facebook</button>
  </div>
   
 <div class="regform"  *ngIf="!buttonClicked2" padding>
@@ -84,12 +84,14 @@
     
    <div style= "width: 80%; margin-left: 8%;">
      <br>
+     <form (ngSubmit)="forgetpass()" >
     <ion-item>
-    <ion-input type="email" placeholder="E-mail" name="email"></ion-input>
+    <ion-input type="email" placeholder="E-mail" name="email"  [(ngModel)]="email"></ion-input>
       </ion-item>
       <br>
       <br>
       <button ion-button type="submit" block >Submit</button>
+      </form>
    </div>
    </div>
 </ion-content>

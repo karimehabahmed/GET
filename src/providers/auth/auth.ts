@@ -11,7 +11,7 @@ import {Http, Response, RequestOptions, Headers, URLSearchParams } from '@angula
 @Injectable()
 export class AuthProvider {
 
-  url:string='https://demo.paymeapp.co/api/v2/login?';
+  url:string='http://54.163.41.235:1337/api/login';
   constructor(private http: Http){}
   
   login(credentials) {
@@ -19,7 +19,7 @@ export class AuthProvider {
      
         
     var headers = new Headers();
-    headers.append('Content-Type', 'application/x-www-form-urlencoded');
+    headers.append('Content-Type', 'application/json');
     let options = new RequestOptions({ headers: headers });
     let urlSearchParams = new URLSearchParams();
     urlSearchParams.append('email', credentials.email);
